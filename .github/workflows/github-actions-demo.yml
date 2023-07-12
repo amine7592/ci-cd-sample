@@ -19,11 +19,13 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   Test:
     runs-on: ubuntu-latest
+    needs: Build
     steps:
       - run : echo "Second job is starting"
       - run : echo "Second job done"
   Deploy:
     runs-on: ubuntu-latest
+    needs: Test
     steps:
       - run: echo "Second job is starting"
       - run: echo "Second job done"
